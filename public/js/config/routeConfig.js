@@ -33,5 +33,15 @@ angular.module("listaTelefonica").config(function($routeProvider){
 		templateUrl:"view/Error.html"
 	});
 
+	$routeProvider.when("/login",{
+		controller: "LoginCtrl",
+		templateUrl:"view/login.html"
+	});
+
+	$routeProvider.when("/signup",{
+		controller : "signUpCtrl",
+		templateUrl:"view/signup.html"
+	});
+
 	$routeProvider.otherwise({redirectTo: "/contatos"});
 });
