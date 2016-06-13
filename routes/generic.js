@@ -3,7 +3,7 @@ var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('../config');
 var router = express.Router();
 
-/*router.use(function(req, res, next) {
+router.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -32,7 +32,7 @@ var router = express.Router();
     });
     
   }
-});*/
+});
 
 
 router.get('/:entity', function(req, res, next) {  
