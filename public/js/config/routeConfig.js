@@ -1,4 +1,10 @@
 angular.module("listaTelefonica").config(function($routeProvider){
+	$routeProvider.when("/",{
+		 redirectTo: function () {
+        	return "/contatos";
+      	 }
+	});
+
 	$routeProvider.when("/contatos",{
 		templateUrl:"view/contatos.html",
 		controller: "listaTelefonicaCtrl",
@@ -8,6 +14,12 @@ angular.module("listaTelefonica").config(function($routeProvider){
 				return contatosAPI.getContatos();
 			}
 		}
+	});
+
+	$routeProvider.when("/despesas",{
+		templateUrl:"view/despesas.html",
+		controller: "DespesasCtrl",
+		access: { requiredLogin: true }		
 	});
 
 	$routeProvider.when("/novoContato",{
@@ -48,7 +60,7 @@ angular.module("listaTelefonica").config(function($routeProvider){
 		templateUrl:"view/signup.html"
 	});
 
-	$routeProvider.otherwise({redirectTo: "/"});
+	$routeProvider.otherwise({redirectTo: "/login"});
 });
 
 angular.module("listaTelefonica").run(function($rootScope, $location, AuthenticationService) {

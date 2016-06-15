@@ -1,5 +1,0 @@
-angular.module("listaTelefonica").directive("uiAccordion", function(){
-	return {
-
-	};
-});

@@ -14,7 +14,7 @@ angular.module("listaTelefonica").factory("tokenInterceptor", function ($q, $win
  
         /* Set Authentication.isAuthenticated to true if 200 received */
         response: function (response) {
-            if (response != null && response.status == 200 && $window.sessionStorage.token && !AuthenticationService.isAuthenticated) {
+            if (response != null && response.status == 200 && !AuthenticationService.isAuthenticated) {
                 AuthenticationService.isAuthenticated = true;
             }
             return response || $q.when(response);
@@ -22,7 +22,7 @@ angular.module("listaTelefonica").factory("tokenInterceptor", function ($q, $win
  
         /* Revoke client authentication if 401 is received */
         responseError: function(rejection) {
-            if (rejection != null && rejection.status === 401 && ($window.sessionStorage.token || AuthenticationService.isAuthenticated)) {
+            if (rejection != null && rejection.status === 401 && AuthenticationService.isAuthenticated) {
                 delete $window.sessionStorage.token;
                 AuthenticationService.isAuthenticated = false;
                 $location.path("/login");
